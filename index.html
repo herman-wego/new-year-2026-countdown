@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown to 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.countdown {
+  display:flex;
+  gap:20px;
+}
+
+.countdown div {
+  background: rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:10px;
+  min-width:100px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.countdown div span {
+  display:block;
+  font-size:2rem;
+  font-weight:700;
+}
+
+.countdown div label {
+  margin-top:5px;
+  font-size:1rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:#FFD700;
+}
+</style>
+</head>
+<body>
+<h1>Countdown to 2026</h1>
+<div class="countdown">
+  <div><span id="days">0</span><label>Days</label></div>
+  <div><span id="hours">0</span><label>Hours</label></div>
+  <div><span id="minutes">0</span><label>Minutes</label></div>
+  <div><span id="seconds">0</span><label>Seconds</label></div>
+</div>
+
+<script>
+const targetDate = new Date('2026-01-01T00:00:00+08:00'); // Singapore GMT+8
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+  if (diff <= 0) {
+    document.getElementById('days').textContent = '0';
+    document.getElementById('hours').textContent = '0';
+    document.getElementById('minutes').textContent = '0';
+    document.getElementById('seconds').textContent = '0';
+    return;
+  }
+  const seconds = Math.floor(diff / 1000) % 60;
+  const minutes = Math.floor(diff / (1000 * 60)) % 60;
+  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours.toString().padStart(2,'0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2,'0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2,'0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
