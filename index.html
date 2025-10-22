@@ -1,91 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Countdown to 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
-<style>
-body {
-  margin:0;
-  font-family:'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  text-align:center;
-}
-
-h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.countdown {
-  display:flex;
-  gap:20px;
-}
-
-.countdown div {
-  background: rgba(255,255,255,0.1);
-  padding:20px;
-  border-radius:10px;
-  min-width:100px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.countdown div span {
-  display:block;
-  font-size:2rem;
-  font-weight:700;
-}
-
-.countdown div label {
-  margin-top:5px;
-  font-size:1rem;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  color:#FFD700;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year 2026 Countdown (Snow)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #f0f0f0;
+            --highlight-color: #FFD700;
+            --bg-gradient-start: #0f0c29;
+            --bg-gradient-mid: #302b63;
+            --bg-gradient-end: #24243e;
+            --box-bg: rgba(255, 255, 255, 0.05);
+            --box-border: rgba(255, 255, 255, 0.1);
+            --box-shadow: rgba(0, 0, 0, 0.25);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-mid), var(--bg-gradient-end));
+            color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            padding: 20px;
+            position: relative;
+        }
+        /* Snow Animation CSS */
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow:
+                10vw 8vh 2px 1px #fff, 20vw 25vh 1px 0px #fff, 30vw 40vh 2px 1px #fff,
+                40vw 55vh 1px 0px #fff, 50vw 70vh 2px 1px #fff, 60vw 85vh 1px 0px #fff,
+                70vw 10vh 2px 1px #fff, 80vw 30vh 1px 0px #fff, 90vw 50vh 2px 1px #fff,
+                5vw 90vh 1px 0px #fff, 15vw 75vh 2px 1px #fff, 25vw 60vh 1px 0px #fff,
+                35vw 45vh 2px 1px #fff, 45vw 30vh 1px 0px #fff, 55vw 15vh 2px 1px #fff,
+                65vw 5vh 1px 0px #fff, 75vw 20vh 2px 1px #fff, 85vw 35vh 1px 0px #fff,
+                95vw 65vh 2px 1px #fff, 12vw 48vh 1px 0px #fff, 22vw 95vh 2px 1px #fff,
+                32vw 80vh 1px 0px #fff, 42vw 65vh 2px 1px #fff, 52vw 50vh 1px 0px #fff,
+                62vw 35vh 2px 1px #fff, 72vw 20vh 1px 0px #fff, 82vw 5vh 2px 1px #fff,
+                92vw 88vh 1px 0px #fff, 8vw 22vh 2px 1px #fff;
+            animation: fall 15s linear infinite;
+        }
+        .snow.layer2 {
+            width: 8px;
+            height: 8px;
+            opacity: 0.7;
+            transform: scale(0.8);
+            box-shadow:
+                13vw 18vh 1px 0px #fff, 23vw 35vh 2px 1px #fff, 33vw 50vh 1px 0px #fff,
+                43vw 65vh 2px 1px #fff, 53vw 80vh 1px 0px #fff, 63vw 95vh 2px 1px #fff,
+                73vw 20vh 1px 0px #fff, 83vw 40vh 2px 1px #fff, 93vw 60vh 1px 0px #fff,
+                7vw 80vh 2px 1px #fff, 17vw 65vh 1px 0px #fff, 27vw 50vh 2px 1px #fff,
+                37vw 35vh 1px 0px #fff, 47vw 20vh 2px 1px #fff, 57vw 10vh 1px 0px #fff,
+                67vw 25vh 2px 1px #fff, 77vw 45vh 1px 0px #fff, 87vw 65vh 2px 1px #fff,
+                97vw 85vh 1px 0px #fff, 10vw 42vh 2px 1px #fff, 20vw 88vh 1px 0px #fff,
+                30vw 70vh 2px 1px #fff, 40vw 55vh 1px 0px #fff, 50vw 40vh 2px 1px #fff,
+                60vw 25vh 1px 0px #fff, 70vw 10vh 2px 1px #fff, 80vw 30vh 1px 0px #fff,
+                90vw 50vh 2px 1px #fff, 5vw 70vh 1px 0px #fff;
+            animation: fall 25s linear infinite;
+        }
+        .snow.layer3 {
+            width: 5px;
+            height: 5px;
+            opacity: 0.5;
+            transform: scale(0.5);
+            box-shadow:
+                11vw 5vh 1px 0px #fff, 21vw 20vh 2px 1px #fff, 31vw 35vh 1px 0px #fff,
+                41vw 50vh 2px 1px #fff, 51vw 65vh 1px 0px #fff, 61vw 80vh 2px 1px #fff,
+                71vw 95vh 1px 0px #fff, 81vw 15vh 2px 1px #fff, 91vw 30vh 1px 0px #fff,
+                3vw 45vh 2px 1px #fff, 13vw 60vh 1px 0px #fff, 23vw 75vh 2px 1px #fff,
+                33vw 90vh 1px 0px #fff, 43vw 10vh 2px 1px #fff, 53vw 25vh 1px 0px #fff,
+                63vw 40vh 2px 1px #fff, 73vw 55vh 1px 0px #fff, 83vw 70vh 2px 1px #fff,
+                93vw 85vh 1px 0px #fff, 8vw 12vh 2px 1px #fff, 18vw 28vh 1px 0px #fff,
+                28vw 48vh 2px 1px #fff, 38vw 68vh 1px 0px #fff, 48vw 88vh 2px 1px #fff,
+                58vw 8vh 1px 0px #fff, 68vw 22vh 2px 1px #fff, 78vw 42vh 1px 0px #fff,
+                88vw 62vh 2px 1px #fff, 98vw 82vh 1px 0px #fff;
+            animation: fall 35s linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-20vh) translateX(0);
+            }
+            to {
+                transform: translateY(120vh) translateX(5vw);
+                opacity: 0;
+            }
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+            text-shadow: 0 4px 10px var(--box-shadow);
+        }
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--secondary-color);
+            opacity: 0.8;
+            margin-top: 5px;
+            margin-bottom: 40px;
+        }
+        #timer {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .box {
+            background: var(--box-bg);
+            border: 1px solid var(--box-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px 30px;
+            min-width: 130px;
+            box-shadow: 0 8px 20px var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+        .box:hover {
+            transform: translateY(-5px);
+        }
+        .box span {
+            display: block;
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+        .box .label {
+            font-size: 1rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--secondary-color);
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+        #message {
+            display: none;
+            font-size: 3.5rem;
+            color: var(--highlight-color);
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 640px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1rem; margin-bottom: 30px; }
+            #timer { flex-direction: column; align-items: center; gap: 15px; }
+            .box { width: 80%; max-width: 200px; padding: 15px 20px; }
+            .box span { font-size: 3rem; }
+            .box .label { font-size: 0.8rem; }
+            #message { font-size: 2.5rem; }
+        }
+    </style>
 </head>
 <body>
-<h1>Countdown to 2026</h1>
-<div class="countdown">
-  <div><span id="days">0</span><label>Days</label></div>
-  <div><span id="hours">0</span><label>Hours</label></div>
-  <div><span id="minutes">0</span><label>Minutes</label></div>
-  <div><span id="seconds">0</span><label>Seconds</label></div>
-</div>
-
-<script>
-const targetDate = new Date('2026-01-01T00:00:00+08:00'); // Singapore GMT+8
-
-function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
-  if (diff <= 0) {
-    document.getElementById('days').textContent = '0';
-    document.getElementById('hours').textContent = '0';
-    document.getElementById('minutes').textContent = '0';
-    document.getElementById('seconds').textContent = '0';
-    return;
-  }
-  const seconds = Math.floor(diff / 1000) % 60;
-  const minutes = Math.floor(diff / (1000 * 60)) % 60;
-  const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  document.getElementById('days').textContent = days;
-  document.getElementById('hours').textContent = hours.toString().padStart(2,'0');
-  document.getElementById('minutes').textContent = minutes.toString().padStart(2,'0');
-  document.getElementById('seconds').textContent = seconds.toString().padStart(2,'0');
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-</script>
+    <div class="snow layer1"></div>
+    <div class="snow layer2"></div>
+    <div class="snow layer3"></div>
+    <div class="container">
+        <h1>New Year 2026 Countdown</h1>
+        <h2>To January 1, 2026 (Singapore Time)</h2>
+        <div id="timer">
+            <div class="box">
+                <span id="days">0</span>
+                <div class="label">Days</div>
+            </div>
+            <div class="box">
+                <span id="hours">0</span>
+                <div class="label">Hours</div>
+            </div>
+            <div class="box">
+                <span id="minutes">0</span>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="box">
+                <span id="seconds">0</span>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+        <div id="message">
+            <h1>Happy New Year 2026! 🎉</h1>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const targetDate = new Date('2026-01-01T00:00:00+08:00').getTime();
+            const elDays = document.getElementById('days');
+            const elHours = document.getElementById('hours');
+            const elMinutes = document.getElementById('minutes');
+            const elSeconds = document.getElementById('seconds');
+            const elTimer = document.getElementById('timer');
+            const elMessage = document.getElementById('message');
+            function pad(num) { return num < 10 ? '0' + num : num; }
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                if (distance < 0) {
+                    clearInterval(interval);
+                    elTimer.style.display = 'none';
+                    elMessage.style.display = 'block';
+                    return;
+                }
+                elDays.innerHTML = days;
+                elHours.innerHTML = pad(hours);
+                elMinutes.innerHTML = pad(minutes);
+                elSeconds.innerHTML = pad(seconds);
+            }
+            const interval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+        })();
+    </script>
 </body>
 </html>
